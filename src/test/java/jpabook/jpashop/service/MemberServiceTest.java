@@ -27,17 +27,17 @@ public class MemberServiceTest {
     EntityManager entityManager;
 
     @Test
-    @Rollback(value = false)
+//    @Rollback(value = false)
     @DisplayName("회원가입")
     public void 회원가입() throws Exception {
-        // given
+        // given (주어진 부분, 테스트의 전제 조건)
         Member member = new Member();
         member.setName("kim");
 
-        // when
+        // when (언제)
         Long saveId = memberService.join(member);
 
-        // then
+        // then (다음, 변경 사항을 설명)
         entityManager.flush();
         assertEquals(member, memberRepository.findOne(saveId));
 
